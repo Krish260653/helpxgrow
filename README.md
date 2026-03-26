@@ -1,4 +1,5 @@
 # Next.js
+# To Be Noted -The Agent is made using rocket ai and we've pushed our code directly from their site that's why there's Rocket-new written
 
 A modern Next.js 15 application built with TypeScript and Tailwind CSS.
 
