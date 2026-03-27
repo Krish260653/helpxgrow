@@ -1,5 +1,5 @@
 # Next.js
-# To Be Noted -The Agent is made using rocket ai and we've pushed our code directly from their site that's why there's Rocket-new written
+
 
 A modern Next.js 15 application built with TypeScript and Tailwind CSS.
 
@@ -74,14 +74,5 @@ Build the application for production:
   npm run build
   ```
 
-## 📚 Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
-
-You can check out the [Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## 🙏 Acknowledgments
 
