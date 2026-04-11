@@ -1,6 +1,5 @@
 # Next.js
-# Direct link to website - https://69da904f3fe2119251181106--voluble-snickerdoodle-e7b144.netlify.app/sign-up-login-screen
-
+# Direct link to website - https://helpxgrow-venda60.public.builtwithrocket.new
 A modern Next.js 15 application built with TypeScript and Tailwind CSS.
 
 ## 🚀 Features
