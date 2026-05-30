@@ -48,7 +48,7 @@ export default function SettingsContent() {
     } else if (type === 'all') {
       clearAllNotifications();
       if (typeof window !== 'undefined') {
-        localStorage.clear();
+        localStorage.removeItem('helpxgrow_notifications');
       }
     }
     setResetConfirm(null);
@@ -71,7 +71,7 @@ export default function SettingsContent() {
   const resetActions = [
     { key: 'notifications', labelEn: 'Clear Notification History', labelHi: 'नोटिफ़िकेशन इतिहास साफ़ करें', descEn: 'Remove all stored notifications from this session', descHi: 'सभी नोटिफ़िकेशन हटाएं', icon: '🔔' },
     { key: 'progress', labelEn: 'Reset Demo Progress', labelHi: 'डेमो प्रगति रीसेट', descEn: 'Clear visited pages and exploration progress', descHi: 'विज़िट किए पेज और प्रगति साफ़ करें', icon: '📊' },
-    { key: 'all', labelEn: 'Full Data Reset', labelHi: 'पूर्ण डेटा रीसेट', descEn: 'Clear all local storage and reset platform to defaults', descHi: 'सभी लोकल डेटा साफ़ करें और डिफ़ॉल्ट पर रीसेट करें', icon: '⚠️', danger: true },
+    { key: 'all', labelEn: 'Full Data Reset', labelHi: 'पूर्ण डेटा रीसेट', descEn: 'Clear HelpXGrow data and reset platform to defaults', descHi: 'HELPxGROW डेटा साफ़ करें और डिफ़ॉल्ट पर रीसेट करें', icon: '⚠️', danger: true },
   ];
 
   return (
