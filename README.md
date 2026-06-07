@@ -69,6 +69,12 @@ Whether you're here to use it, learn from it, or contribute to it — you're in 
 ```
 helpxgrow/
 ├── public/                  # Static assets (images, icons, fonts)
+│   ├── favicon.ico
+│   └── assets/       
+│       ├── Dashoard.png
+│       ├── Agent-map.png
+│       ├── Cost-dashboard.png
+│       └── Audit-trail.png
 ├── src/
 │   ├── app/                 # App Router — pages and layouts
 │   │   ├── layout.tsx       # Root layout (applies to all pages)
@@ -80,6 +86,8 @@ helpxgrow/
 │   ├── styles/              # Global styles and Tailwind configuration
 │   └── lib/                 # Utility functions and helpers
 ├── .env.example             # Example environment variables
+├── .gitignore               # SPECIFIES WHICH FILES GIT SHOULD IGNORE (node_modules, .env, etc.)
+├── README.md                # YOUR MAIN REPOSITORY DOCUMENTATION
 ├── next.config.mjs          # Next.js configuration
 ├── tailwind.config.js       # Tailwind CSS configuration
 ├── postcss.config.js        # PostCSS configuration
