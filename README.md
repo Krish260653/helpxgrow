@@ -49,6 +49,40 @@ Whether you're here to use it, learn from it, or contribute to it — you're in 
 - 🛠️ **Developer Experience** — ESLint, Prettier, and PostCSS pre-configured
 
 ---
+<h2 align="center">Platform Features Overview</h2>
+<p align="center"><i>A visual guide to the main views and interfaces within the application.</i></p>
+
+<h3 align="center">Dashboard.png</h3>
+<p align="center">The main operational workspace displaying central system metrics, statistics, and platform performance data.</p>
+<p align="center">
+  <img src="helpxgrow/assets/Dashboard.png" alt="Dashboard" width="85%" />
+</p>
+
+<br />
+
+<h3 align="center">Agent-map.png</h3>
+<p align="center">A visual interface showing the network map, communication pathways, and connections between active system components.</p>
+<p align="center">
+  <img src="./public/assets/Agent-map.png" alt="Agent-map" width="85%" />
+</p>
+
+<br />
+
+<h3 align="center">Cost-dashboard.png</h3>
+<p align="center">The analytics view tracking resource consumption, financial expenditures, and budget metrics over time.</p>
+<p align="center">
+  <img src="./public/assets/Cost-dashboard.png" alt="Cost-dashboard" width="85%" />
+</p>
+
+<br />
+
+<h3 align="center">Audit-trail.png</h3>
+<p align="center">A chronological security log tracking system events, user actions, and validation records for compliance.</p>
+<p align="center">
+  <img src="./public/assets/Audit-trail.png" alt="Audit-trail" width="85%" />
+</p>
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -71,7 +105,7 @@ helpxgrow/
 ├── public/                  # Static assets (images, icons, fonts)
 │   ├── favicon.ico
 │   └── assets/       
-│       ├── Dashoard.png
+│       ├── Dashboard.png
 │       ├── Agent-map.png
 │       ├── Cost-dashboard.png
 │       └── Audit-trail.png
