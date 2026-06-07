@@ -76,7 +76,7 @@ Whether you're here to use it, learn from it, or contribute to it — you're in 
 
 <br />
 
-<h3 align="center">Audit-trail.png</h3>
+<h3 align="center">Audit-trail</h3>
 <p align="center">A chronological security log tracking system events, user actions, and validation records for compliance.</p>
 <p align="center">
   <img src="./assets/Audit-trail.png" alt="Audit-trail" width="85%" />
