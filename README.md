@@ -66,10 +66,11 @@ This project uses Tailwind CSS for styling with the following features:
 
 ## 📱 Deployment
 
-Build the application for production:
+Build and start the application for production:
 
   ```bash
   npm run build
+  npm run start
   ```
 
 
