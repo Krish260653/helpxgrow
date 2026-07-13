@@ -83,53 +83,63 @@ export const workflowLogService = {
   },
 
   async fetchStats(): Promise<{
-    totalWorkflows: number;
-    successCount: number;
-    errorCount: number;
-    uniqueAgents: number;
-    recentLogs: WorkflowLog[];
-  }> {
-    const supabase = createClient();
-    try {
-      const { data, error } = await supabase
-        .from('workflow_logs')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(100);
+      totalWorkflows: number;
+      successCount: number;
+      errorCount: number;
+      uniqueAgents: number;
+      recentLogs: WorkflowLog[];
+    }> {
+      const supabase = createClient();
+      try {
+        // Run both queries in parallel — count (no data transfer) + recent rows for stats
+        const [countResult, dataResult] = await Promise.all([
+          supabase
+            .from('workflow_logs')
+            .select('*', { count: 'exact', head: true }),
+          supabase
+            .from('workflow_logs')
+            .select('*')
+            .order('created_at', { ascending: false })
+            .limit(100),
+        ]);
 
-      if (error) {
-        if (isSchemaError(error)) throw error;
-        console.warn('workflow_logs stats error:', error.message);
+        if (countResult.error) {
+          if (isSchemaError(countResult.error)) throw countResult.error;
+          console.warn('workflow_logs count error:', countResult.error.message);
+        }
+        if (dataResult.error) {
+          if (isSchemaError(dataResult.error)) throw dataResult.error;
+          console.warn('workflow_logs stats error:', dataResult.error.message);
+          return { totalWorkflows: 0, successCount: 0, errorCount: 0, uniqueAgents: 0, recentLogs: [] };
+        }
+
+        const rows = dataResult.data ?? [];
+        const logs = rows.map((row) => ({
+          id: row.id,
+          workflowName: row.workflow_name,
+          status: row.status,
+          agentId: row.agent_id,
+          userEmail: row.user_email,
+          metadata: row.metadata,
+          createdAt: row.created_at,
+        }));
+
+        const uniqueAgents = new Set(rows.map((r) => r.agent_id)).size;
+        const successCount = rows.filter((r) => r.status === 'success').length;
+        const errorCount = rows.filter((r) => r.status === 'error').length;
+  
+        return {
+          totalWorkflows: countResult.count ?? rows.length, // real total, fallback to rows.length
+          successCount,
+          errorCount,
+          uniqueAgents,
+          recentLogs: logs.slice(0, 6),
+        };
+      } catch (err) {
+        console.warn('workflowLogService.fetchStats failed:', err);
         return { totalWorkflows: 0, successCount: 0, errorCount: 0, uniqueAgents: 0, recentLogs: [] };
       }
-
-      const rows = data ?? [];
-      const logs = rows.map((row) => ({
-        id: row.id,
-        workflowName: row.workflow_name,
-        status: row.status,
-        agentId: row.agent_id,
-        userEmail: row.user_email,
-        metadata: row.metadata,
-        createdAt: row.created_at,
-      }));
-
-      const uniqueAgents = new Set(rows.map((r) => r.agent_id)).size;
-      const successCount = rows.filter((r) => r.status === 'success').length;
-      const errorCount = rows.filter((r) => r.status === 'error').length;
-
-      return {
-        totalWorkflows: rows.length,
-        successCount,
-        errorCount,
-        uniqueAgents,
-        recentLogs: logs.slice(0, 6),
-      };
-    } catch (err) {
-      console.warn('workflowLogService.fetchStats failed:', err);
-      return { totalWorkflows: 0, successCount: 0, errorCount: 0, uniqueAgents: 0, recentLogs: [] };
-    }
-  },
+    },
 
   subscribeToNew(callback: (log: WorkflowLog) => void) {
     const supabase = createClient();
