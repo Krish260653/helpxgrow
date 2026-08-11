@@ -165,3 +165,5 @@ export const workflowLogService = {
     return () => supabase.removeChannel(channel);
   },
 };
+
+.catch(err => console.error("Promise.all failed:", err));

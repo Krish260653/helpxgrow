@@ -97,3 +97,5 @@ export default function PDFExportButton({
     </button>
   );
 }
+
+.catch(err => console.error("Promise.all failed:", err));
