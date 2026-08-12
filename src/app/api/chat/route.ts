@@ -27,7 +27,8 @@ export async function POST(req: NextRequest) {
       }),
     });
 
-    const data = await response.json();
+    if (!response.ok) throw new Error("Request failed");
+const data = await response.json();
     return NextResponse.json({ content: data.content?.[0]?.text || '' });
   } catch {
     return NextResponse.json({ error: 'Failed to fetch' }, { status: 500 });
